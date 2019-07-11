@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<!-- <h1>RBM Revisited</h1> -->
+<h2>A remixing and remastering project</h2>
+<p>In which I have selected a number of much older tracks and brought them up to date with more modern software and years of experience.</p>
+<div class="row">
+{% for track in tracks %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <a href="{% url 'track_detail' track.pk %}">
+            <img class="card-img-top" src="{% static track.image %}">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{ track.title }}</h5>
+                <p class="card-text">{{ track.description }}</p>
+                <a href="{% url 'track_detail' track.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

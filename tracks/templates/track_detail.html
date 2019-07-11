@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<div class="col-md-6">
+  <section>
+    <img src="{% static track.image %}" style='height: auto; width: 100%; object-fit: contain'>
+      <div class='container'>
+        <div class='row'>
+          <div class='left'>
+            <h1>RBM:</h1><h2>{{ track.title }}</h2>
+          </div>
+          <div class='right'>
+          <audio id="track" src="{% static track.file %}"></audio>
+          <button id='play'></button>
+          <button id='pause'></button>
+          </div>
+        </div>
+        {{ track.description }}
+      </div>
+  </section>
+</div>
+<script>
+  document.getElementById("play").onclick = function() {
+     document.getElementById('track').play();
+}
+
+document.getElementById("pause").onclick = function() {
+     document.getElementById('track').pause();
+}</script>
+{% endblock %}
